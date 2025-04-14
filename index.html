@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Friend Surprise</title>
+  <style>
+    html {
+      scrollbar-width: auto;
+      -ms-overflow-style: auto;
+    }
+    html::-webkit-scrollbar {
+      display: block;
+      width: 10px;
+    }
+    html::-webkit-scrollbar-thumb {
+      background: #ff99cc;
+      border-radius: 10px;
+    }
+    html::-webkit-scrollbar-track {
+      background: #ffe6f0;
+    }
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffe6f0, #ffccff);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    .hidden { display: none; }
+    .center {
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+      padding: 20px;
+    }
+    .glow {
+      font-size: 4rem;
+      color: #ffffff;
+      text-shadow: 0 0 15px #ff66b2, 0 0 30px #ff99cc;
+      margin-bottom: 30px;
+      animation: pulse 2s infinite;
+    }
+    h2 {
+      font-size: 2.5rem;
+      color: #ff66b2;
+      text-shadow: 0 0 8px #ffb3d9;
+    }
+    h3 {
+      font-size: 1.8rem;
+      color: #ff66b2;
+    }
+    p, #reason {
+      font-size: 1.3rem;
+      color: #ff66b2;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      background-color: #ff99cc;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #ff66b2;
+      transform: scale(1.1);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .journey {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .card {
+      background: #fff0f5;
+      border-radius: 16px;
+      padding: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      width: 220px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+    }
+    .card p {
+      font-size: 1rem;
+      color: #d63384;
+      margin-top: 10px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #ff99cc; }
+      50% { text-shadow: 0 0 20px #ff66b2; }
+      100% { text-shadow: 0 0 10px #ff99cc; }
+    }
+  </style>
+</head>
+<body>
+  <div id="step1" class="center">
+    <div class="glow">The Cutest Love Of My Life</div>
+    <button onclick="goToStep2()">Click to Enter My World</button>
+  </div>
+
+  <div id="step2" class="center hidden">
+    <h2>Why You Are My Love</h2>
+    <p id="reason"></p>
+    <button onclick="showNextReason()" id="reasonBtn">Tell Me Another Reason</button>
+  </div>
+
+  <div id="step3" class="center hidden">
+    <h2>Our Beautiful Journey Together</h2>
+    <div class="journey">
+      <div class="card">
+        <img src="https://i.ibb.co/sJbtRzVv/Whats-App-Image-2025-04-14-at-18-16-34-92aa4e01.jpg" alt="Whats-App-Image-2025-04-14-at-18-16-34-92aa4e01" border="0">        
+        <p>Madam ji in Suit</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/jkSVfrz7/Whats-App-Image-2025-04-14-at-18-16-34-b694ad7a.jpg" alt="Whats-App-Image-2025-04-14-at-18-16-34-b694ad7a" border="0">        
+        <p>My favorite one in Rajputi Poshak</p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/3ytkpyLy/Whats-App-Image-2025-04-14-at-18-16-34-f38a904d.jpg" alt="Whats-App-Image-2025-04-14-at-18-16-34-f38a904d" border="0">        
+        <p>Madam ji in Saree </p>
+      </div>
+      <div class="card">
+        <img src="https://i.ibb.co/c9N0SSH/Whats-App-Image-2025-04-14-at-18-16-35-1a3b5a53.jpg" alt="Whats-App-Image-2025-04-14-at-18-16-35-1a3b5a53" border="0">        
+        <p>We Are Together.</p>
+      </div>
+    </div>
+    <button onclick="goToFinalStep()">For Final Message</button>
+  </div>
+
+  <div id="step4" class="center hidden">
+    <h2>Final Message Just for You 💖</h2>
+    <p style="font-size: 1.5rem; color: #ff66b2; max-width: 600px; margin: auto;">
+      Thank you for being my sunshine, my safe place, and my forever favorite person. I love you, My wifey! 🌈💫
+    </p>
+  </div>
+
+  <script>
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const step3 = document.getElementById('step3');
+    const step4 = document.getElementById('step4');
+    const reasonPara = document.getElementById('reason');
+    const reasonBtn = document.getElementById('reasonBtn');
+
+    const reasons = [
+      "You always make me smile even on my worst days.",
+      "You understand me without me saying a word.",
+      "Life feels magical when you're around."
+    ];
+    let reasonIndex = 0;
+
+    function goToStep2() {
+      step1.classList.add('hidden');
+      step2.classList.remove('hidden');
+    }
+
+    function showNextReason() {
+      if (reasonIndex < reasons.length) {
+        reasonPara.textContent = reasons[reasonIndex];
+        reasonIndex++;
+        if (reasonIndex === reasons.length) {
+          reasonBtn.textContent = "Enter Our Sheylane";
+        }
+      } else {
+        step2.classList.add('hidden');
+        step3.classList.remove('hidden');
+      }
+    }
+
+    function goToFinalStep() {
+      step3.classList.add('hidden');
+      step4.classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
